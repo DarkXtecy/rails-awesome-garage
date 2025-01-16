@@ -1,0 +1,51 @@
+<h1>Car Details</h1>
+<p><strong>Brand:</strong> <%= @car.brand %></p>
+<p><strong>Model:</strong> <%= @car.model %></p>
+<p><strong>Year:</strong> <%= @car.year %></p>
+<p><strong>Fuel:</strong> <%= @car.fuel %></p>
+<p><strong>Owner:</strong> <%= @car.owner.nickname %></p>
+
+<hr>
+
+<h2>Add to Garage</h2>
+<% if Favourite.exists?(car: @car) %>
+  <p>This car is already in your garage!</p>
+<% else %>
+  <%= simple_form_for([@car, Favourite.new]) do |f| %>
+    <%= f.button :submit, "Add to Garage" %>
+  <% end %>
+<% end %>
+
+<hr>
+
+<h2>Leave a Review</h2>
+<%= simple_form_for([@car, @review]) do |f| %>
+  <div>
+    <%= f.input :comment, label: "Your Comment" %>
+  </div>
+  <div>
+    <%= f.input :rating, label: "Rating (1-5)", collection: 1..5, as: :select %>
+  </div>
+  <div>
+    <%= f.button :submit, "Submit Review" %>
+  </div>
+<% end %>
+
+<hr>
+
+<h2>Reviews</h2>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <strong>Rating:</strong> <%= review.rating %>/5<br>
+      <strong>Comment:</strong> <%= review.comment %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to "Back to All Cars", cars_path %>
+</p>
+<p>
+  <%= link_to "My Garage", favourites_path %>
+</p>

@@ -1,0 +1,14 @@
+<h1>Your Garage</h1>
+<ul>
+  <% @favourites.each do |favourite| %>
+    <li>
+      <strong><%= favourite.car.brand %> <%= favourite.car.model %></strong>
+      (<%= favourite.car.year %>, <%= favourite.car.fuel %>)
+      - Owned by: <%= favourite.car.owner.nickname %>
+      <%= button_to "Remove from Garage", favourite_path(favourite), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+<p>
+  <%= link_to "Back to All Cars", cars_path %>
+</p>

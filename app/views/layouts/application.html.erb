@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsAwesomeGarage</title>
+    <title>AwesomeGarage</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,17 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+      <nav>
+        <ul>
+          <li><%= link_to "All Cars", cars_path %></li>
+          <li><%= link_to "My Garage", favourites_path %></li>
+        </ul>
+      </nav>
+    </header>
+
+     <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

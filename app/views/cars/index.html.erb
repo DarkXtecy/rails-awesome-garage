@@ -1,15 +1,27 @@
-<h1>All Cars</h1>
-<ul>
+<div class="cars-page">
   <% @cars.each do |car| %>
-    <li>
-      <strong><%= car.brand %> <%= car.model %></strong>
-      (<%= car.year %>, <%= car.fuel %>)
-      - Owned by: <%= car.owner.nickname %>
-      <br>
-      <%= link_to "View Details", car_path(car) %>
-    </li>
+    <!-- Wrap the entire car card in a link -->
+    <%= link_to car_path(car), class: "car-card-link" do %>
+      <div class="car-card">
+        <div class="car-header">
+          <h2 class="car-brand"><%= car.brand %></h2>
+          <h3 class="car-model"><%= car.model %></h3>
+          <p class="car-timestamp"><%= car.created_at.strftime("%a %b %d at %I:%M %p") %></p>
+        </div>
+        <div class="car-image">
+          <% if car.image.present? %>
+            <%= image_tag car.image, alt: "#{car.brand} #{car.model}" %>
+          <% else %>
+            <%= image_tag "placeholder-car.jpg", alt: "#{car.brand} #{car.model}" %>
+          <% end %>
+        </div>
+        <div class="car-footer">
+          <button class="comment-btn">
+            <i class="fas fa-comment"></i> Comment
+          </button>
+          <span class="badge"><%= "Zaki007" %></span>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-</ul>
-<p>
-  <%= link_to "My Garage", favourites_path %>
-</p>
+</div>

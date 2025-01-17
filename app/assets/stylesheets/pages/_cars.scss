@@ -1,0 +1,100 @@
+.cars-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5; /* Light gray background */
+  padding: 20px;
+
+  .car-card-link {
+    text-decoration: none;
+    color: inherit;
+    // width: 100%;
+
+    &:hover {
+      transform: scale(1.02);
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  .car-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 20px; /* Space between cards */
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Limit max card size */
+    overflow: hidden;
+    position: relative; /* Enable absolute positioning for child elements */
+
+    .car-header {
+      padding: 15px;
+
+      .car-brand {
+        font-size: 22px;
+        color: #d9534f; /* Red color */
+        margin: 0;
+      }
+
+      .car-model {
+        font-size: 18px;
+        color: #333;
+        margin: 5px 0;
+      }
+
+      .car-timestamp {
+        font-size: 14px;
+        color: #888;
+        margin: 0;
+      }
+    }
+
+    .car-image {
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-bottom: 1px solid #ddd; /* Optional separation line */
+      }
+    }
+
+    .car-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      position: relative; /* Keeps the badge aligned with its parent */
+
+      .comment-btn {
+        background-color: transparent;
+        border: none;
+        color: #333;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-right: 5px;
+        }
+
+        &:hover {
+          color: #d9534f;
+        }
+      }
+
+      .badge {
+        background-color: #d9534f; /* Red background */
+        color: #fff;
+        border-radius: 12px;
+        padding: 5px 10px;
+        font-size: 12px;
+        position: absolute; /* Absolutely positioned relative to car-footer */
+        // bottom: 10px;
+        top: -12px;
+        right: 15px; /* Adjust placement */
+        transform: translate(0, 0); /* Keeps it in place even if resized */
+        font-size: clamp(10px, 1.2vw, 12px); /* Responsive font size */
+      }
+    }
+  }
+}

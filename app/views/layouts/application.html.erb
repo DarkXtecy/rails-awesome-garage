@@ -11,14 +11,15 @@
   </head>
 
   <body>
-  <header>
+  <%# <header>
       <nav>
         <ul>
-          <li><%= link_to "All Cars", cars_path %></li>
-          <li><%= link_to "My Garage", favourites_path %></li>
-        </ul>
+          <%# <li><%= link_to "All Cars", cars_path %></li>
+          <%# <li><%= link_to "My Garage", favourites_path %></li>
+        <%# </ul>
       </nav>
-    </header>
+    </header> %>
+    <%= render "shared/navbar" %> <!-- Include the navbar partial -->
 
      <main>
       <%= yield %>

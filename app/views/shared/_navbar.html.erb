@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="logo">
+      <img src="/assets/logo.png" alt="Logo" />
+    </div>
+    <div class="title">Awesome Garage</div>
+  </div>
+
+<!-- Navbar Links -->
+  <div class="navbar-right" id="menu-links">
+    <%= link_to "Home", root_path, class: "nav-link" %>
+    <%= link_to "My Garage", favourites_path, class: "nav-link" %>
+  </div>
+
+  <!-- Hamburger Menu Button -->
+  <button class="hamburger-menu" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>

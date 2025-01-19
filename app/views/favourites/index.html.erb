@@ -1,14 +1,28 @@
-<h1>Your Garage</h1>
-<ul>
-  <% @favourites.each do |favourite| %>
-    <li>
-      <strong><%= favourite.car.brand %> <%= favourite.car.model %></strong>
-      (<%= favourite.car.year %>, <%= favourite.car.fuel %>)
-      - Owned by: <%= favourite.car.owner.nickname %>
-      <%= button_to "Remove from Garage", favourite_path(favourite), method: :delete, data: { confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
-<p>
-  <%= link_to "Back to All Cars", cars_path %>
-</p>
+<div class="favourites-page">
+  <h1 class="page-title">My Garage</h1>
+
+  <div class="favourites-list">
+    <% @favourites.each do |favourite| %>
+      <div class="favourite-card">
+        <!-- Car Image -->
+        <div class="car-image">
+          <%= image_tag favourite.car.image || "placeholder-car.jpg", alt: "#{favourite.car.brand} #{favourite.car.model}" %>
+        </div>
+
+        <!-- Car Details -->
+        <div class="car-details">
+          <h2 class="car-brand"><%= favourite.car.brand %></h2>
+          <h3 class="car-model"><%= favourite.car.model %></h3>
+          <p class="car-info">
+            <%= favourite.car.year %> | <%= favourite.car.fuel %>
+          </p>
+        </div>
+
+        <!-- Delete Button -->
+        <div class="delete-button">
+          <%= button_to "Remove", favourite_path(favourite), method: :delete, class: "btn-delete" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

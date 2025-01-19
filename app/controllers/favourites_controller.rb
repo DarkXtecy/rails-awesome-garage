@@ -14,7 +14,7 @@ class FavouritesController < ApplicationController
   end
 
   def index
-    @favourites = Favourite.all
+    @favourites = Favourite.includes(:car)
   end
 
   def destroy
